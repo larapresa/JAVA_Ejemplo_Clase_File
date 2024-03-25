@@ -50,29 +50,48 @@ public class Ejemplo_Clase_File {
 
             // Crea un directorio con el nombre que se haya 
             // indicado en el constructor del File
-            File miDirectorio = new File("Nuevo Directorio");
+            File miDirectorio = new File("Directorio1");
             miDirectorio.mkdir();
             System.out.println("Listado de ficheros en el directorio");
-            miDirectorio.list();
+            String[] listado = miDirectorio.list();
+
+            for (String s : listado) {
+                if (listado.length == 0) {
+                    System.out.print(" " + s + " ");
+                } else {
+                    System.out.print("Directorio vacío ");
+                }
+            }
             // añadimos dos ficheros al directorio
             File f1 = new File(miDirectorio, "FICHERO1.TXT");
             File f2 = new File(miDirectorio, "FICHERO2.TXT");
 
-           
-                if (f1.createNewFile()) {
-                    System.out.println("FICHERO1 creado correctamente...");
-                } else {
-                    System.out.println("No se ha podido crear FICHERO1...");
-                }
+            if (f1.createNewFile()) {
+                System.out.println("FICHERO1 creado correctamente...");
+            } else {
+                System.out.println("No se ha podido crear FICHERO1...");
+            }
 
-                if (f2.createNewFile()) {
-                    System.out.println("FICHERO2 creado correctamente...");
-                } else {
-                    System.out.println("No se ha podido crear FICHERO2...");
-                }
-            
+            if (f2.createNewFile()) {
+                System.out.println("FICHERO2 creado correctamente...");
+            } else {
+                System.out.println("No se ha podido crear FICHERO2...");
+            }
+
             System.out.println("Listado de ficheros en el directorio");
-            miDirectorio.list();
+            listado = miDirectorio.list();
+            for (String s : listado) {
+                System.out.print(" " + s + " ");
+            }
+
+            // Borrar ficheros
+            f1.delete();
+            f2.delete();
+            // Borrar directorio (debe estar vacío para poder eliminarlo)
+            if (miDirectorio.delete() == true) {
+                System.out.println("Directorio borrado correctamente");
+
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
