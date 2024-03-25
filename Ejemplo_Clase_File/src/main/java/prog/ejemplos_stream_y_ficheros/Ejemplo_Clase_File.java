@@ -56,11 +56,7 @@ public class Ejemplo_Clase_File {
             String[] listado = miDirectorio.list();
 
             for (String s : listado) {
-                if (listado.length == 0) {
-                    System.out.print(" " + s + " ");
-                } else {
-                    System.out.print("Directorio vacío ");
-                }
+                System.out.print(" " + s + " ");
             }
             // añadimos dos ficheros al directorio
             File f1 = new File(miDirectorio, "FICHERO1.TXT");
